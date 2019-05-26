@@ -52,3 +52,7 @@ Time for some math!
 This scenario involves a pipe filled with flowing oil.  A digital sensor is measuring the fluid flow, sending out a pulse every time 6.3 gallons of oil pass.  The PLC program needs to calculate the flow speed based on this pulse.
 
 Luckily, math is one of my strong points.  This project was quick to complete: just count the number of seconds between pulses, divide the sensor k factor by the time between pulses, and multipy by 60s to get instantaneous flow in gallons per minute.  Done!
+
+...or maybe not.  After watching the instructor's solution I realized that the instructions were actually asking for the flow rate to update every 12 seconds, not just every time the flow sensor pulsed (which happened to be every 12 seconds).  Of course this makes sense - in a real situation the sensor will be pulsing a lot faster, and you probably don't need the flow rate updating every few miliseconds!
+
+So I reworked the program to include a timer to trigger a flow rate update every 12 seconds, and a counter to track how many sensor pulses were generated during that 12 second interval.  Success!
