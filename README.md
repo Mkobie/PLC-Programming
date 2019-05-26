@@ -62,7 +62,7 @@ How do you track how long a system has been running?  Well, one way is to progra
 
 This project seemed fun and easy off the bat.  Kind of like how a mechanical counter cascades its movement from the first wheel to the next, or how I imagine binary digits counting up:
 
-![sketch of a mechanical counter](https://mkobierski.files.wordpress.com/2017/10/20171007_1737151.jpg "Mechanical Counter" | width=100)
+(![sketch of a mechanical counter](https://mkobierski.files.wordpress.com/2017/10/20171007_1737151.jpg "Mechanical Counter" | width=100)
 
 Of course, the devil is in the details.  In my first attempt I didn't consider the milliseconds that you lose if you're counting up with a time base of 1.  The solution is to use the smallest time base possible, and not to include a reset unless you're resetting the whole system's count.  
 
