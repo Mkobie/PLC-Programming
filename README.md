@@ -56,3 +56,16 @@ Luckily, math is one of my strong points.  This project was quick to complete: j
 ...or maybe not.  After watching the instructor's solution I realized that the instructions were actually asking for the flow rate to update every 12 seconds, not just every time the flow sensor pulsed (which happened to be every 12 seconds).  Of course this makes sense - in a real situation the sensor will be pulsing a lot faster, and you probably don't need the flow rate updating every few miliseconds!
 
 So I reworked the program to include a timer to trigger a flow rate update every 12 seconds, and a counter to track how many sensor pulses were generated during that 12 second interval.  Success!
+
+## Project 6: PLC Hourmeter
+How do you track how long a system has been running?  Well, one way is to program an hourmeter into your PLC.  This uses 4 integer registers, one for seconds, one for minutes, one for hours, and one for thousands of hours, and the way this program works, these registers count up second by second as long as an input signal bit is on.  When the system is off, we're not counting.
+
+This project seemed fun and easy off the bat.  Kind of like how a mechanical counter cascades its movement from the first wheel to the next, or how I imagine binary digits counting up:
+
+![sketch of a mechanical counter](https://mkobierski.wordpress.com/2017/10/07/sketches/#jp-carousel-197 "Mechanical Counter")
+![sketch of a mechanical counter](https://mkobierski.files.wordpress.com/2017/10/20171007_1737151.jpg?w=773&h=&zoom=2 "Mechanical Counter")
+![sketch of a mechanical counter](https://mkobierski.files.wordpress.com/2017/10/20171007_1737151.jpg "Mechanical Counter")
+
+Of course, the devil is in the details.  In my first attempt I didn't consider the milliseconds that you lose if you're counting up with a time base of 1.  The solution is to use the smallest time base possible, and not to include a reset unless you're resetting the whole system's count.  
+
+The instructor's solution involved using counters as accumulators for the seconds, minutes, and hours (see v2), but I preferred to skip the counters and just either - for example - add 1 to the seconds count, or at the end of a minute, add a 1 to the minute count and move a 0 into the seconds register (see v3).  Both ways work, and both are easy for other people to understand, so I guess this is a situation where there are no wrong answers.
