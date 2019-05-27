@@ -15,12 +15,17 @@ This repository holds a series of PLC practice problems. Each project consists o
 
 <a name="proj1"></a>
 ## Project 1: Pressure Tank
+Link to video: https://youtu.be/d7nl2_5GnBk
+
 Starting off easy, project one has two digital inputs (Low and High pressure switches), and two digital outputs (to a pump and a run indicator light).  When tank pressure drops below L, the pump turns on until pressure reaches H.  When the pressure is above L the run indicator light is on.
 
 My first time through I coded the logic quite literally, and ended up with 4 simple lines of control code.  However, the real world is a little messier than my theoretical world, and in reality sensors will flash on and off at edge conditions.  Therefore I went through and added timers so that outputs only change after the input conditions stabilize.
 
+
 <a name="proj2"></a>
 ## Project 2: Nut Filling Station
+Link to video: https://youtu.be/1l-ESXJ02oU
+
 Again using digital IOs, the aim of project two was to control the process of bringing a box to a nut hopper, filling the box with one of two types of nuts, and sending the full box away to the end nut consumers.  
 
 There were four inputs: a proximity switch to detect the presence of the box, two photo eyes to check the label colour in order to dispense the appropriate type of nut, and a level sensor to signal when a box was full.  These were used to control three outputs: the conveyor motor to move the box to and from the filling station, and the two individual hoppers, one for walnuts and one for pecans (which I, personally, prefer).
@@ -37,6 +42,8 @@ There were a few other lessons learned as well.  In summary:
 
 <a name="proj3"></a>
 ## Project 3: Barcode Scanner
+Link to video: https://youtu.be/gk9gdPBFSDc
+
 This project was a little different - no input or output signals!  Instead, we were using the PLC memory banks as an inventory for three types of parts.  Based on a "barcode" string, the program would update the quantity of parts held in the inventory.  
 
 Although my approach was quite different from the instructors, I was happy enough with the result that I didn't update my original solution.  I was a little stuck at first due to the lack of a "not equal" string comparator block.  I solved this by using the "equal" block, comparing the incoming barcode register to a blank string, leading to a TND (temporary end) command, therefore sending the scan back to the top of the program, ie the start of this line.  
@@ -45,6 +52,8 @@ The other approach would have been to use a bit instead of the TND, and have all
 
 <a name="proj4"></a>
 ## Project 4: Water Treatment System
+Link to video: https://youtu.be/j7GeVQzAwvQ
+
 Here we have a water treatment system being integrated into an existing system.  The program controls a singla output: a signal to a servo that turns a cam.  Depending on the position of the cam it could be closing one of four switches to indicate that it's in one of three cycle states, or that it's at the home position.  
 
 The final input is a digital cycle call input, from the existing system.  When it activates the cycle begins and the cam cycles through activating the three switches for varying amounts of time.
@@ -61,6 +70,8 @@ There's an idea: Using the PackML approach for cyclic PLC programs would be a go
 
 <a name="proj5"></a>
 ## Project 5: Pipeline Oil Flow
+Link to video: https://youtu.be/dIP0M8ejYvc
+
 Time for some math!
 
 This scenario involves a pipe filled with flowing oil.  A digital sensor is measuring the fluid flow, sending out a pulse every time 6.3 gallons of oil pass.  The PLC program needs to calculate the flow speed based on this pulse.
@@ -73,6 +84,8 @@ So I reworked the program to include a timer to trigger a flow rate update every
 
 <a name="proj6"></a>
 ## Project 6: PLC Hourmeter
+Link to video: https://youtu.be/gQ78MRFveBw
+
 How do you track how long a system has been running?  Well, one way is to program an hourmeter into your PLC.  This uses 4 integer registers, one for seconds, one for minutes, one for hours, and one for thousands of hours, and the way this program works, these registers count up second by second as long as an input signal bit is on.  When the system is off, we're not counting.
 
 This project seemed fun and easy off the bat.  Kind of like how a mechanical counter cascades its movement from the first wheel to the next, or how I imagine binary digits counting up:
@@ -85,6 +98,8 @@ The instructor's solution involved using counters as accumulators for the second
 
 <a name="proj7"></a>
 # Project 7: O2 Sensor Calibration
+Link to video: https://youtu.be/5PBmI8EIo-w
+
 This one was a doozie.  The premise was clear: you have an oxygen sensor that needs to be calibrated every so often.  The calibration cycle consists of showing the sensor air with 0% O2 for a period of time, followed by air with 30% O2 for the same period of time.  Using averages recorded during each stage, it is possible to calculate a new min and max input value to ensure the sensor shows an accurate output in its sensing range.
 
 When I approached this project on my own, I figured that it was important to take a running average of the air oxygen concentration during regular operation to smooth out the data.  I managed this by dedicating five float registers to sampling, and using an integer as a pointer to keep track of which float register is to be updated next.  Once this piece of logic was done I copied it over to average the 0% and 30% readings as well.  
