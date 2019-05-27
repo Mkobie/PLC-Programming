@@ -5,13 +5,13 @@ This repository holds a series of PLC practice problems. Each project consists o
 * A video of the program passing the function test criteria.
 
 ### Contents
-1. [ Project 1: Pressure Tank ](#proj1)
-2. [ Project 2: Nut Filling Station ](#proj2)
-3. [ Project 3: Barcode Scanner ](#proj3)
-4. [ Project 4: Water Treatment System ](#proj4)
-5. [ Project 5: Pipeline Oil Flow ](#proj5)
-6. [ Project 6: PLC Hourmeter ](#proj6)
-7. [ Project 7: O2 Sensor Calibration ](#proj7)
+* [ Project 1: Pressure Tank ](#proj1)
+* [ Project 2: Nut Filling Station ](#proj2)
+* [ Project 3: Barcode Scanner ](#proj3)
+* [ Project 4: Water Treatment System ](#proj4)
+* [ Project 5: Pipeline Oil Flow ](#proj5)
+* [ Project 6: PLC Hourmeter ](#proj6)
+* [ Project 7: O2 Sensor Calibration ](#proj7)
 
 <a name="proj1"></a>
 ## Project 1: Pressure Tank
