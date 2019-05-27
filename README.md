@@ -67,3 +67,16 @@ This project seemed fun and easy off the bat.  Kind of like how a mechanical cou
 Of course, the devil is in the details.  In my first attempt I didn't consider the milliseconds that you lose if you're counting up with a time base of 1.  The solution is to use the smallest time base possible, and not to include a reset unless you're resetting the whole system's count.  
 
 The instructor's solution involved using counters as accumulators for the seconds, minutes, and hours (see v2), but I preferred to skip the counters and just either - for example - add 1 to the seconds count, or at the end of a minute, add a 1 to the minute count and move a 0 into the seconds register (see v3).  Both ways work, and both are easy for other people to understand, so I guess this is a situation where there are no wrong answers.
+
+# Project 7: O2 Sensor Calibration
+This one was a doozie.  The premise was clear: you have an oxygen sensor that needs to be calibrated every so often.  The calibration cycle consists of showing the sensor air with 0% O2 for a period of time, followed by air with 30% O2 for the same period of time.  Using averages recorded during each stage, it is possible to calculate a new min and max input value to ensure the sensor shows an accurate output in its sensing range.
+
+When I approached this project on my own, I figured that it was important to take a running average of the air oxygen concentration during regular operation to smooth out the data.  I managed this by dedicating five float registers to sampling, and using an integer as a pointer to keep track of which float register is to be updated next.  Once this piece of logic was done I copied it over to average the 0% and 30% readings as well.  
+
+After seeing the instructor's solution I decided it was best to rework the project again from scratch in order to cement some best practices in my mind.
+
+Rule #1: no spaghetti code.  
+I had originally been using JSRs to execute the 0% and 30% sampling subroutines.  While I'm sure this has its place, in a project like this one it seems better to get in the mindset of using states.  You could run the instructor's code in any order and it would work - mine threw hiccups if a certain line was placed above another!  This would be difficult to troubleshoot a month down the road, and isn't how I want to code.
+
+Rule #2: don't forget the edge cases!
+What if the input is 0 but the sensor is set up to expect inputs from 100-16483?  It's always best to add a branch to handle inputs outside the expected range.
