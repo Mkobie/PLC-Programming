@@ -4,11 +4,16 @@ This repository holds a series of PLC practice problems. Each project consists o
 * A PDF of the the full PLC program, and
 * A video of the program passing the function test criteria.
 
+1. [ Project 1: Pressure Tank. ](#proj1)
+2. [ Project 2: Nut Filling Station. ](#proj2)
+
+<a name="proj1"></a>
 ## Project 1: Pressure Tank
 Starting off easy, project one has two digital inputs (Low and High pressure switches), and two digital outputs (to a pump and a run indicator light).  When tank pressure drops below L, the pump turns on until pressure reaches H.  When the pressure is above L the run indicator light is on.
 
 My first time through I coded the logic quite literally, and ended up with 4 simple lines of control code.  However, the real world is a little messier than my theoretical world, and in reality sensors will flash on and off at edge conditions.  Therefore I went through and added timers so that outputs only change after the input conditions stabilize.
 
+<a name="proj2"></a>
 ## Project 2: Nut Filling Station
 Again using digital IOs, the aim of project two was to control the process of bringing a box to a nut hopper, filling the box with one of two types of nuts, and sending the full box away to the end nut consumers.  
 
