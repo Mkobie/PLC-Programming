@@ -4,8 +4,14 @@ This repository holds a series of PLC practice problems. Each project consists o
 * A PDF of the the full PLC program, and
 * A video of the program passing the function test criteria.
 
-1. [ Project 1: Pressure Tank. ](#proj1)
-2. [ Project 2: Nut Filling Station. ](#proj2)
+### Contents
+1. [ Project 1: Pressure Tank ](#proj1)
+2. [ Project 2: Nut Filling Station ](#proj2)
+3. [ Project 3: Barcode Scanner ](#proj3)
+4. [ Project 4: Water Treatment System ](#proj4)
+5. [ Project 5: Pipeline Oil Flow ](#proj5)
+6. [ Project 6: PLC Hourmeter ](#proj6)
+7. [ Project 7: O2 Sensor Calibration ](#proj7)
 
 <a name="proj1"></a>
 ## Project 1: Pressure Tank
@@ -29,6 +35,7 @@ There were a few other lessons learned as well.  In summary:
 * *Always* consider what would happen if a sensor false triggered
   * Might make you use a trigger instead of direct activation to avoid flipping a motor on and off
 
+<a name="proj3"></a>
 ## Project 3: Barcode Scanner
 This project was a little different - no input or output signals!  Instead, we were using the PLC memory banks as an inventory for three types of parts.  Based on a "barcode" string, the program would update the quantity of parts held in the inventory.  
 
@@ -36,6 +43,7 @@ Although my approach was quite different from the instructors, I was happy enoug
 
 The other approach would have been to use a bit instead of the TND, and have all the following runs start with a XIO (examine if open) instruction.  Works perfectly well, but I think my approach will catch incoming barcode information just a hair quicker!
 
+<a name="proj4"></a>
 ## Project 4: Water Treatment System
 Here we have a water treatment system being integrated into an existing system.  The program controls a singla output: a signal to a servo that turns a cam.  Depending on the position of the cam it could be closing one of four switches to indicate that it's in one of three cycle states, or that it's at the home position.  
 
@@ -51,6 +59,7 @@ And that reminds me of... PackML.
 
 There's an idea: Using the PackML approach for cyclic PLC programs would be a good practice to use until I learn of a better alternative.
 
+<a name="proj5"></a>
 ## Project 5: Pipeline Oil Flow
 Time for some math!
 
@@ -62,6 +71,7 @@ Luckily, math is one of my strong points.  This project was quick to complete: j
 
 So I reworked the program to include a timer to trigger a flow rate update every 12 seconds, and a counter to track how many sensor pulses were generated during that 12 second interval.  Success!
 
+<a name="proj6"></a>
 ## Project 6: PLC Hourmeter
 How do you track how long a system has been running?  Well, one way is to program an hourmeter into your PLC.  This uses 4 integer registers, one for seconds, one for minutes, one for hours, and one for thousands of hours, and the way this program works, these registers count up second by second as long as an input signal bit is on.  When the system is off, we're not counting.
 
@@ -73,6 +83,7 @@ Of course, the devil is in the details.  In my first attempt I didn't consider t
 
 The instructor's solution involved using counters as accumulators for the seconds, minutes, and hours (see v2), but I preferred to skip the counters and just either - for example - add 1 to the seconds count, or at the end of a minute, add a 1 to the minute count and move a 0 into the seconds register (see v3).  Both ways work, and both are easy for other people to understand, so I guess this is a situation where there are no wrong answers.
 
+<a name="proj7"></a>
 # Project 7: O2 Sensor Calibration
 This one was a doozie.  The premise was clear: you have an oxygen sensor that needs to be calibrated every so often.  The calibration cycle consists of showing the sensor air with 0% O2 for a period of time, followed by air with 30% O2 for the same period of time.  Using averages recorded during each stage, it is possible to calculate a new min and max input value to ensure the sensor shows an accurate output in its sensing range.
 
