@@ -112,3 +112,10 @@ I had originally been using JSRs to execute the 0% and 30% sampling subroutines.
 
 Rule #2: don't forget the edge cases!
 What if the input is 0 but the sensor is set up to expect inputs from 100-16483?  It's always best to add a branch to handle inputs outside the expected range.
+
+## Project 8: Vacuum Tank immitation PID
+Link to video: https://youtu.be/kYDZUgk0P0U
+
+This project was a piece of cake after that last one!  To get used to process control without the PID block (can't use it without a real system unfortunately), in this project I was comparing a sensed vaccuum value to a desired setpoint, and adjusting the signal out to a pump in order to bring the system vaccuum back to the setpoint.  
+
+The implementation was fairly straight forward - using floats, calculate the percent difference between the measured and desired values, and note whether the measured value is too high or too low by setting a "increase" or "decrease" bit.  Then it was just a matter of subtracting or adding the appropriate amount from the signal to the pump.
