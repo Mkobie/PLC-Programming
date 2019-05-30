@@ -1,5 +1,5 @@
 # PLC-Programming
-This repository holds a series of PLC practice problems. Each project consists of at least three files:
+This repository holds a series of PLC practice problems, done using the Allen-Bradley MicroLogix 1100 Series B processor. Each project consists of at least three files:
 * The original RSLogix file (.RSS),
 * A PDF of the the full PLC program, and
 * A video of the program passing the function test criteria.
@@ -12,7 +12,7 @@ This repository holds a series of PLC practice problems. Each project consists o
 * [ Project 4: Water Treatment System ](#proj4)
 * [ Project 5: Pipeline Oil Flow ](#proj5)
 * [ Project 6: PLC Hourmeter ](#proj6)
-* [ Project 7: O2 Sensor Calibration ](#proj7)* 
+* [ Project 7: O2 Sensor Calibration ](#proj7)
 * [ Project 8: Project 8: Vacuum Tank immitation PID ](#proj8)
 
 <a name="proj1"></a>
