@@ -12,7 +12,8 @@ This repository holds a series of PLC practice problems. Each project consists o
 * [ Project 4: Water Treatment System ](#proj4)
 * [ Project 5: Pipeline Oil Flow ](#proj5)
 * [ Project 6: PLC Hourmeter ](#proj6)
-* [ Project 7: O2 Sensor Calibration ](#proj7)
+* [ Project 7: O2 Sensor Calibration ](#proj7)* 
+* [ Project 8: Project 8: Vacuum Tank immitation PID ](#proj8)
 
 <a name="proj1"></a>
 ## Project 1: Pressure Tank
@@ -113,6 +114,7 @@ I had originally been using JSRs to execute the 0% and 30% sampling subroutines.
 Rule #2: don't forget the edge cases!
 What if the input is 0 but the sensor is set up to expect inputs from 100-16483?  It's always best to add a branch to handle inputs outside the expected range.
 
+<a name="proj8"></a>
 ## Project 8: Vacuum Tank immitation PID
 Link to video: https://youtu.be/kYDZUgk0P0U
 
