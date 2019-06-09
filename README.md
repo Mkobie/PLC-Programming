@@ -125,12 +125,12 @@ The implementation was fairly straight forward - using floats, calculate the per
 
 <a name="proj9"></a>
 # Project 9: DDE Messaging
-DDE, or Dynamic Data Echange, is a way of sending information between applications.  The task here was to take information from the RSLogix PLC program running on the emulator, and display it in excel in real time.  Or, on button click at least.  
+DDE, or Dynamic Data Exchange, is a way of sending information between applications.  The task here was to take information from the RSLogix PLC program running on the emulator, and display it in excel in real time.  Or, on button click at least.  
 
 To do this I leaned on this walkthrough: http://www.plcdev.com/connecting_controllogix_excel by John Schop.
+
 First I went through DDE/OPC Topic Configuration in RSLinx, then I fooled around on Microsoft Excel for a little, learning about macros and buttons and the like.  Got my code looking okay, then - fingers crossed - clicked my "Read Data" button. And...!  Nothing.  Nada.  Just an error message.
 
 After a bit more tinkering and time spent on some forums I tried running Excel as administrator.  Without high expectations I clicked my way through the "Copy DDE/OPC Link" menus in RSLinx, and tried pasting one of my strings into the Excel file.  Imaging my surprise when a number actually appeared and, even better, updated before my eyes!  
 
 As cool as that was, the project specs called for updates on button push only, so I deleted the value, double checked my VBA, and tried that "Read Data" button again.  Success!  
-
