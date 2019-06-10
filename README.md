@@ -149,3 +149,5 @@ To put it down in black and white, when writing alarm code you will always be us
 * set notification bit.
 
 And don't you forget it!
+
+One other thing to remember is what happens in fault or startup conditions.  When setting HOA control, get used to setting 0 = OFF just incase something strange happens and you end up with your state to 0 on restart.  Also, make use of that S:1/15 first pass bit for initializing states, eg. setting the status to 0 at the start!
