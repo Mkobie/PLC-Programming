@@ -13,8 +13,9 @@ This repository holds a series of PLC practice problems, done using the Allen-Br
 * [ Project 5: Pipeline Oil Flow ](#proj5)
 * [ Project 6: PLC Hourmeter ](#proj6)
 * [ Project 7: O2 Sensor Calibration ](#proj7)
-* [ Project 8: Vacuum Tank immitation PID ](#proj8)
+* [ Project 8: Vacuum Tank imitation PID ](#proj8)
 * [ Project 9: DDE Messaging ](#proj9)
+* [ Project 10: Pump Protection ](#proj10)
 
 <a name="proj1"></a>
 ## Project 1: Pressure Tank
@@ -57,13 +58,13 @@ The other approach would have been to use a bit instead of the TND, and have all
 ## Project 4: Water Treatment System
 Link to video: https://youtu.be/j7GeVQzAwvQ
 
-Here we have a water treatment system being integrated into an existing system.  The program controls a singla output: a signal to a servo that turns a cam.  Depending on the position of the cam it could be closing one of four switches to indicate that it's in one of three cycle states, or that it's at the home position.  
+Here we have a water treatment system being integrated into an existing system.  The program controls a single output: a signal to a servo that turns a cam.  Depending on the position of the cam it could be closing one of four switches to indicate that it's in one of three cycle states, or that it's at the home position.  
 
 The final input is a digital cycle call input, from the existing system.  When it activates the cycle begins and the cam cycles through activating the three switches for varying amounts of time.
 
 I was happy with my solution and didn't modify it based on the instructor's solution.  By comparing the actual state of the system with the desired state of the system the program knew if the cam should energize or not.  The logic controlling the desired state was based on the switches, actual and desired position, and a series of timers.  
 
-That being said, there might still be a neater way of orgnaizing this logic, that is, instead of just considerng the state of the water treatment system (fill/ drain/ etc), also consider the state of the program itself: run, idle, stop.
+That being said, there might still be a neater way of organizing this logic, that is, instead of just considering the state of the water treatment system (fill/ drain/ etc), also consider the state of the program itself: run, idle, stop.
 
 And that reminds me of... PackML.
 
@@ -81,7 +82,7 @@ This scenario involves a pipe filled with flowing oil.  A digital sensor is meas
 
 Luckily, math is one of my strong points.  This project was quick to complete: just count the number of seconds between pulses, divide the sensor k factor by the time between pulses, and multipy by 60s to get instantaneous flow in gallons per minute.  Done!
 
-...or maybe not.  After watching the instructor's solution I realized that the instructions were actually asking for the flow rate to update every 12 seconds, not just every time the flow sensor pulsed (which happened to be every 12 seconds).  Of course this makes sense - in a real situation the sensor will be pulsing a lot faster, and you probably don't need the flow rate updating every few miliseconds!
+...or maybe not.  After watching the instructor's solution I realized that the instructions were actually asking for the flow rate to update every 12 seconds, not just every time the flow sensor pulsed (which happened to be every 12 seconds).  Of course this makes sense - in a real situation the sensor will be pulsing a lot faster, and you probably don't need the flow rate updating every few milliseconds!
 
 So I reworked the program to include a timer to trigger a flow rate update every 12 seconds, and a counter to track how many sensor pulses were generated during that 12 second interval.  Success!
 
@@ -119,7 +120,7 @@ What if the input is 0 but the sensor is set up to expect inputs from 100-16483?
 ## Project 8: Vacuum Tank immitation PID
 Link to video: https://youtu.be/kYDZUgk0P0U
 
-This project was a piece of cake after that last one!  To get used to process control without the PID block (can't use it without a real system unfortunately), in this project I was comparing a sensed vaccuum value to a desired setpoint, and adjusting the signal out to a pump in order to bring the system vaccuum back to the setpoint.  
+This project was a piece of cake after that last one!  To get used to process control without the PID block (can't use it without a real system unfortunately), in this project I was comparing a sensed vacuum value to a desired setpoint, and adjusting the signal out to a pump in order to bring the system vacuum back to the setpoint.  
 
 The implementation was fairly straight forward - using floats, calculate the percent difference between the measured and desired values, and note whether the measured value is too high or too low by setting a "increase" or "decrease" bit.  Then it was just a matter of subtracting or adding the appropriate amount from the signal to the pump.
 
@@ -134,3 +135,9 @@ First I went through DDE/OPC Topic Configuration in RSLinx, then I fooled around
 After a bit more tinkering and time spent on some forums I tried running Excel as administrator.  Without high expectations I clicked my way through the "Copy DDE/OPC Link" menus in RSLinx, and tried pasting one of my strings into the Excel file.  Imaging my surprise when a number actually appeared and, even better, updated before my eyes!  
 
 As cool as that was, the project specs called for updates on button push only, so I deleted the value, double checked my VBA, and tried that "Read Data" button again.  Success!  
+
+<a name="proj10"></a>
+# Project 10: Pump Protection
+Final project in the course!
+
+This was a longer one, combining several bits and pieces that I learned through the course.  Handling digital and analog inputs, using timers to avoid rapid on-offs at boundary conditions, HOA control, fault handling...  Nothing too crazy, just wrapping the course up in a satisfying way!
