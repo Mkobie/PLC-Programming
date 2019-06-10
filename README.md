@@ -141,3 +141,11 @@ As cool as that was, the project specs called for updates on button push only, s
 Final project in the course!
 
 This was a longer one, combining several bits and pieces that I learned through the course.  Handling digital and analog inputs, using timers to avoid rapid on-offs at boundary conditions, HOA control, fault handling...  Nothing too crazy, just wrapping the course up in a satisfying way!
+
+To put it down in black and white, when writing alarm code you will always be using the general approach of:
+* condition
+* interrupt
+* set alarm bit
+* set notification bit.
+
+And don't you forget it!
