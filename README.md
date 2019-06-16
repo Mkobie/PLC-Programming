@@ -139,6 +139,8 @@ As cool as that was, the project specs called for updates on button push only, s
 
 <a name="proj10"></a>
 # Project 10: Pump Protection
+Link to video: https://youtu.be/ltcWGx9v2tE
+
 Final project in the course!
 
 This was a longer one, combining several bits and pieces that I learned through the course.  Handling digital and analog inputs, using timers to avoid rapid on-offs at boundary conditions, HOA control, fault handling...  Nothing too crazy, just wrapping the course up in a satisfying way!
