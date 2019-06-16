@@ -4,6 +4,7 @@ This repository holds a series of PLC practice problems, done using the Allen-Br
 * A PDF of the the full PLC program, and
 * A video of the program passing the function test criteria.
   * the video can also be accessed via the YouTube links in this ReadMe
+  * sorry about the quiet audio!  I finally got myself a better mic right around project 10...
 
 ### Contents
 * [ Project 1: Pressure Tank ](#proj1)
